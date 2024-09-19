@@ -1,0 +1,19 @@
+body {
+    /* background-color: #FFD166; */
+    background-color: rgb(255, 209, 102, .5);
+}
+h1 {
+    text-align: center;
+    color: #26547C;
+    font-size: 60px;
+    text-shadow: #EF476F 0px 0px 3px;
+}
+    
+
+button {
+    margin: 50 auto;
+    position: relative;
+    top: 50%;
+    left: 48%;
+
+}

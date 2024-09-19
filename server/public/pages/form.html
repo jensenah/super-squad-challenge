@@ -6,16 +6,16 @@
     <title>Contact Form</title>
   </head>
   <body>
-    <h1>Contact Form</h1>
+    <h1> New Superheroes!!</h1>
     <form action="/submit-form" method="POST">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required /><br /><br />
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required /><br /><br />
-      <label for="message">Message:</label><br />
+      <label for="superHeroName">Superhero Name:</label>
+      <input type="text" id="superHeroName" name="superHeroName" required /><br /><br />
+      <label for="universe">Universe:</label>
+      <input type="text" id="universe" name="universe" required /><br /><br />
+      <label for="superPowers">Superpowers:</label><br />
       <textarea
-        id="message"
-        name="message"
+        id="superPowers"
+        name="superPowers"
         rows="4"
         cols="50"
         required
@@ -25,22 +25,22 @@
     </form>
     <h1>User Management</h1>
     <form id="updateForm">
-      <label for="currentName">Current name:</label>
-      <input type="text" id="currentName" required /><br /><br />
-      <label for="currentEmail">Current email:</label>
-      <input type="email" id="currentEmail" required /><br /><br />
-      <label for="newName">New name:</label>
-      <input type="text" id="newName" required /><br /><br />
-      <label for="newEmail">New email:</label>
-      <input type="email" id="newEmail" required /><br /><br />
-      <button type="submit">Update User</button>
+      <label for="currentSuperHeroName">Current Superhero Name:</label>
+      <input type="text" id="currentSuperHeroName" required /><br /><br />
+      <label for="currentUniverse">Current universe:</label>
+      <input type="text" id="currentUniverse" required /><br /><br />
+      <label for="newSuperHeroName">New Superhero name:</label>
+      <input type="text" id="newSuperHeroName" required /><br /><br />
+      <label for="newUniverse">New Universe:</label>
+      <input type="text" id="newUniverse" required /><br /><br />
+      <button type="submit">Update Superhero</button>
     </form>
     <h1>Show Users</h1>
     <table id="usersTable">
       <thead>
         <tr>
-          <th>User Name</th>
-          <th>User Email</th>
+          <th>Superhero Name</th>
+          <th>Superhero Universe</th>
         </tr>
       </thead>
       <tbody id="userTableBody">
@@ -52,19 +52,19 @@
         .getElementById("updateForm")
         .addEventListener("submit", async (e) => {
           e.preventDefault();
-          const currentName = document.getElementById("currentName").value;
-          const currentEmail = document.getElementById("currentEmail").value;
-          const newName = document.getElementById("newName").value;
-          const newEmail = document.getElementById("newEmail").value;
+          const currentSuperHeroName = document.getElementById("currentSuperHeroName").value;
+          const currentUniverse = document.getElementById("currentUniverse").value;
+          const newSuperHeroName = document.getElementById("newSuperHeroName").value;
+          const newUniverse = document.getElementById("newUniverse").value;
           try {
             const response = await fetch(
-              `/update-user/${currentName}/${currentEmail}`,
+              `/update-user/${currentSuperHeroName}/${currentUniverse}`,
               {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ newName, newEmail }),
+                body: JSON.stringify({ newSuperHeroName, newUniverse }),
               }
             );
             const data = await response.json();
@@ -72,7 +72,7 @@
             renderUsers();
             // alert("Message is: " + data.message);
           } catch (error) {
-            alert("Error updating user: " + error.message);
+            alert("Error updating user: " + error.superPowers);
           }
         });
       async function fetchUsers() {
@@ -100,7 +100,7 @@
           const users = await fetchUsers();
           if (Array.isArray(users) && users.length > 0) {
             users.forEach((user) => {
-              const row = `<tr><td>${user.name}</td><td>${user.email}</td></tr>`;
+              const row = `<tr><td>${user.superHeroName}</td><td>${user.universe}</td></tr>`;
               tableBody.innerHTML += row;
             });
           }
