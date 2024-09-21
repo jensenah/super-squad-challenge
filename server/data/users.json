@@ -7,31 +7,10 @@
     ]
   },
   {
-    "superHeroName": "c",
-    "universe": "c",
+    "superHeroName": "b",
+    "universe": "b",
     "superPowers": [
-      "adsd"
-    ]
-  },
-  {
-    "superHeroName": "l",
-    "universe": "l",
-    "superPowers": [
-      "sdf"
-    ]
-  },
-  {
-    "superHeroName": "v",
-    "universe": "v",
-    "superPowers": [
-      "qqqq"
-    ]
-  },
-  {
-    "superHeroName": "y",
-    "universe": "y",
-    "superPowers": [
-      "nnn"
+      "asdafsf"
     ]
   }
 ]

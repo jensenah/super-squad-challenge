@@ -4,14 +4,87 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Form</title>
+    <!-- <link rel="stylesheet" href="styles_form.css"> -->
+    <style>
+input:not(:placeholder-shown):valid {
+  outline-color: green;
+}
+
+input:focus:invalid {
+  outline-color: rgb(255,209,102)
+}
+
+body {
+  background-color: #26547C;
+}
+h1#new, h1#management {
+  text-align: center;
+  color: rgb(255,209,102);
+  text-shadow: #EF476F 0px 0px 8px;
+  margin: 30px;
+}
+h1#new {
+  margin-top: 40px;
+}
+h1#management {
+  margin-top: 80px;
+}
+div.container {
+  width: 40%;
+  float: left;
+  background-color: tan;
+  margin-left: 100px;
+  height: 100vh;
+  border-radius: 10px;
+  border: 5px solid white;
+  
+}
+#firstForm {
+  text-align: center;
+  color: black;
+}
+
+#updateForm {
+  /* background-color: yellow; */
+  text-align: center;
+  color: black;
+}
+input#submitForm {
+  width: 125px;
+}
+label {
+  font-size: 20px;
+}
+
+
+div.container2 {
+  float: right;
+  width: 40%;
+  text-align: center;
+  margin-left:80px;
+}
+h1#show {
+  width: 40%;
+  color: rgb(255,209,102);
+  text-shadow: #EF476F 0px 0px 8px;
+  margin: 30px;
+}
+table {
+  font-size: 20px;
+}
+tr {
+  word-spacing: 10px;
+}
+    </style>
   </head>
   <body>
-    <h1> New Superheroes!!</h1>
-    <form action="/submit-form" method="POST">
-      <label for="superHeroName">Superhero Name:</label>
-      <input type="text" id="superHeroName" name="superHeroName" required /><br /><br />
+  <div class="container">
+    <h1 id="new"> New Superheroes!!</h1>
+    <form action="/submit-form" method="POST" id="firstForm">
+      <label for="superHeroName" id="heroName">Superhero Name:</label>
+      <input type="text" id="superHeroName" name="superHeroName" placeholder="Superman" required /><br /><br />
       <label for="universe">Universe:</label>
-      <input type="text" id="universe" name="universe" required /><br /><br />
+      <input type="text" id="universe" name="universe" placeholder="DC" required /><br /><br />
       <label for="superPowers">Superpowers:</label><br />
       <textarea
         id="superPowers"
@@ -21,9 +94,11 @@
         required
       ></textarea
       ><br /><br />
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Submit" id="submitForm" />
     </form>
-    <h1>User Management</h1>
+
+
+    <h1 id="management">User Management</h1>
     <form id="updateForm">
       <label for="currentSuperHeroName">Current Superhero Name:</label>
       <input type="text" id="currentSuperHeroName" required /><br /><br />
@@ -35,7 +110,10 @@
       <input type="text" id="newUniverse" required /><br /><br />
       <button type="submit">Update Superhero</button>
     </form>
-    <h1>Show Users</h1>
+  </div>
+
+  <div class="container2">
+    <h1 id="show">Show Users</h1>
     <table id="usersTable">
       <thead>
         <tr>
@@ -47,6 +125,7 @@
         <!-- data of users will be rendered here -->
       </tbody>
     </table>
+  </div>
     <script>
       document
         .getElementById("updateForm")
