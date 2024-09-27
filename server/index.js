@@ -104,6 +104,34 @@ app.put('/update-user/:currentSuperHeroName/:currentUniverse', async (req, res) 
     }
 });
 
+app.delete('/user/:superHeroName/:universe', async (req, res) => {
+    try {
+        const { superHeroName, universe } = req.params;
+        let users = [];
+        try {
+            const data = await fs.readFile(dataPath, 'utf8');
+            users = JSON.parse(data);
+        } catch (error) {
+            return res.status(404).send('File data not found');
+        };
+        const userIndex = users.findIndex(user => user.superHeroName === superHeroName && user.universe === universe);
+        if (userIndex === -1) {
+            return res.status(404).send('user not found');
+        }
+        users.splice(userIndex, 1)
+        console.log(userIndex);
+        console.log(users);
+        try {
+            await fs.writeFile(dataPath, JSON.stringify(users, null, 2));
+        } catch (error) {
+            console.error("failed to write to database")
+        }
+        res.send('successfully deleted user')
+    } catch (error) {
+        res.status(500).send("there was a problem")
+    }
+});
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
